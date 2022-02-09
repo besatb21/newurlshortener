@@ -32,9 +32,10 @@
                 </ul>
 
                 <span class="navbar-text">
-                    <a class="btn btn-primary btn-sm navbar-button" href="#" role="button">Login</a>
+                    <a  class="btn  btn-sm navbar-button border border-light " href="#" role="button">Login</a>
                 </span>
             </div>
+
         </nav>
 
     
