@@ -30,10 +30,19 @@
                         <a class="nav-link" href="#">Link 3</a>
                     </li>
                 </ul>
-
+                <?php
+                if(isset($_SESSION) && empty($_SESSION['authenticated']))
+                echo '
                 <span class="navbar-text">
-                    <a  class="btn  btn-sm navbar-button border border-light " href="#" role="button">Login</a>
-                </span>
+                    <a  class="btn  btn-sm navbar-button border border-light " href="login.php" role="button">Login</a>
+                </span> ';
+
+                else 
+                    echo '
+                    <span class="navbar-text">
+                    <a  class="btn  btn-sm navbar-button border border-light " href="index.php" role="button">Logout</a>
+                     </span> ';
+                ?>
             </div>
 
         </nav>
