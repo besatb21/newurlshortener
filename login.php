@@ -47,7 +47,7 @@
 </form> -->
 
 <form>
-    <div class ="d-flex flex-column justify-content-center align-items-center mt-5  " style="margin-top :auto"> 
+    <div class ="d-flex flex-column justify-content-center align-items-center  " style ="margin-top:100px"> 
         <div class="  form-group  col-md-2 ">
             <label for="exampleInputEmail1">Username</label>
             <input type="text" class="form-control position-relative translate-middle start-50 top-50 " id="username" placeholder="Enter username">

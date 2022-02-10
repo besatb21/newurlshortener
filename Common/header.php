@@ -30,6 +30,10 @@
                         <a class="nav-link" href="#">Link 3</a>
                     </li>
                 </ul>
+
+                <span class="navbar-text" style = "margin-right:10px ;">
+                    <a  class="btn  btn-sm navbar-button border border-light "   href="register.php" role="button">Sign up</a>
+                </span>
                 <?php
                 if(isset($_SESSION) && empty($_SESSION['authenticated']))
                 echo '
