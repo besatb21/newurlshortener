@@ -3,5 +3,11 @@
     "description": "URL Shortener Web Project",
     "type": "project",
     "license": "MIT",
-    "require": {}
+    "require": {},
+
+    "autoload": {
+        "psr-4": {
+            "Shortener\\": "."
+        }
+    }
 }
