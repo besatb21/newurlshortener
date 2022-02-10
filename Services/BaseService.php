@@ -15,6 +15,7 @@ abstract class BaseService
         else
         {
             self::$_instance = new $class();
+            return self::$_instance;
         }
     }
 }

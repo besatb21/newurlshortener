@@ -7,6 +7,8 @@ use Shortener\Services\DB;
 $db = DB::instance();
 // $model = new BaseModel();
 
+$db->getConnection();
+
 include_once "Common/header.php";
 ?>
 
