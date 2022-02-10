@@ -3,7 +3,7 @@ require_once __DIR__ . '/startup.php';
 
 use Domain\Model\Base\{BaseModel, ModelField};
 
-include_once "common/header.php";
+include_once "Common/header.php";
 ?>
 
 <h1>
@@ -11,5 +11,5 @@ include_once "common/header.php";
 </h1>
 
 <?php
-include_once "common/footer.php";
+include_once "Common/footer.php";
 ?>

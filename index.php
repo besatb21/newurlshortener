@@ -2,7 +2,7 @@
 
 if(!isset($_SESSION))
 session_start();
-include_once "common/header.php";
+include_once "Common/header.php";
 ?>
 
 
@@ -23,6 +23,6 @@ include_once "common/header.php";
     </div>
 </div>
 <?php
-include_once "common/footer.php";
+include_once "Common/footer.php";
 ?>
 

@@ -1,5 +1,5 @@
 <?php 
-    include 'common/header.php' ;
+    include 'Common/header.php' ;
 
         //se we need nje text box per username and one for the password 
 
@@ -65,5 +65,5 @@
 
 
 <?php
-    include 'common/footer.php'
+    include 'Common/footer.php'
 ?>
