@@ -6,6 +6,7 @@ class BaseModel
 {
     protected $TABLE;
     protected $FIELDS;
+    protected $PRIMARY;
 
     protected $_fields;
 
@@ -26,6 +27,14 @@ class BaseModel
     {
         ;
     }
+
+    public static function select() {
+        
+    }
+
+    public static function update() {}
+    
+    public static function delete() {}
 }
 
 ?>
