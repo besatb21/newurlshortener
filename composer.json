@@ -1,0 +1,7 @@
+{
+    "name": "hndregjoni/urlshortener",
+    "description": "URL Shortener Web Project",
+    "type": "project",
+    "license": "MIT",
+    "require": {}
+}
