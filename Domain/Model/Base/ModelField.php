@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Model\Base;
+namespace Shortener\Domain\Model\Base;
 
 class ModelField
 {

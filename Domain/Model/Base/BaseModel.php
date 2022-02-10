@@ -1,8 +1,8 @@
 <?php
 
-namespace Domain\Model\Base;
+namespace Shortener\Domain\Model\Base;
 
-class BaseModel
+abstract class BaseModel
 {
     protected $TABLE;
     protected $FIELDS;
