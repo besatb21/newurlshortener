@@ -21,9 +21,15 @@ class ModelField
     public function setValue($val)
     {
         $this->value = $val;
+        $this->setDirty(true);
     }
 
-    public function getirty()
+    public function setValueSilently($val)
+    {
+        $this->value = $val;
+    }
+
+    public function isDirty()
     {
         return $this->dirty;
     }
