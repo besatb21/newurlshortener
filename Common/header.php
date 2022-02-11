@@ -31,22 +31,23 @@
                     </li>
                 </ul>
 
-                <span class="navbar-text" style = "margin-right:10px ;">
-                    <a  class="btn  btn-sm navbar-button border border-light "   href="register.php" role="button">Sign up</a>
-                </span>
-                <?php
-                if(isset($_SESSION) && empty($_SESSION['authenticated']))
-                echo '
-                <span class="navbar-text">
-                    <a  class="btn  btn-sm navbar-button border border-light " href="login.php" role="button">Login</a>
-                </span> ';
+                <? if(!Shortener\Services\Authentication\Auth::instance()->loggedIn()) {?>
+                    <span class="navbar-text" style = "margin-right:10px ;">
+                        <a  class="btn  btn-sm navbar-button border border-light "   href="register.php" role="button">Sign up</a>
+                    </span>
 
-                else 
-                    echo '
                     <span class="navbar-text">
-                    <a  class="btn  btn-sm navbar-button border border-light " href="index.php" role="button">Logout</a>
-                     </span> ';
-                ?>
+                        <a  class="btn  btn-sm navbar-button border border-light " href="login.php" role="button">Login</a>
+                    </span>
+
+                <?} else {?>
+                    <span class="navba-text">
+                        <?=Shortener\Services\Authentication\Auth::instance()->user()->username?>
+                    </span>
+                    <span class="navbar-text">
+                        <a class="btn  btn-sm navbar-button border border-light " href="logout.php" role="button">Logout</a>
+                    </span> 
+                <? } ?>
             </div>
 
         </nav>

@@ -1,8 +1,9 @@
 <?php 
-    include 'common/header.php' ;
+require_once __DIR__ . '/startup.php';
 
-  
+use Shortener\Services\Authentication\Auth;
 
+include 'Common/header.php' ;  
 
 // <!-- getting username and password form and printing a message if they are not found in the db  -->
 
@@ -18,9 +19,8 @@ if (isset($_POST['submit'])) {
         $validation_messages['username'] = 'Username cannot be empty!';
     } else if (!preg_match('/^[a-zA-Z0-9_]+$/', $trimmed_username)) {
         $validation_messages['username'] = 'Username can only have digits, letters and _';
-    } else {
-
-        // check if there exist any username with the same username ~
+    } else if (Auth::instance()->userExists($trimmed_username)) {
+        $validation_messages['username'] = 'Username already exists!';
     }
     // check password
     $trimmed_password = trim($_POST['password']);
@@ -29,7 +29,12 @@ if (isset($_POST['submit'])) {
     else
         $clean['password'] = $trimmed_password;
     
-    //check if any validation failed 
+    
+    if (count($validation_messages) == 0)
+    {
+        // No validation errors, create a user:
+        $result = Auth::instance()->register($trimmed_username, $trimmed_password);
+    }
    
 
 }
@@ -79,5 +84,5 @@ if (isset($_POST['submit'])) {
 
 
 <?php
-    include 'common/footer.php'
+    include 'Common/footer.php'
 ?>

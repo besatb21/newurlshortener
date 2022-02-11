@@ -34,10 +34,11 @@ class SelectQueryBuilder extends QueryBuilder
         $stmt = $this->pdo->prepare($this->sql);
 
         $foundAny = $stmt->execute();
-        if (!$foundAny)
-            throw new Exception("No results found!");
 
         $results = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($results === false)
+            return null;
  
         $instance = new $this->TYPE;
 

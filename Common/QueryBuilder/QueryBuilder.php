@@ -3,7 +3,7 @@
 namespace Shortener\Common\QueryBuilder;
 
 use \PDO;
-use Shortener\Services\DB;
+use Shortener\Services\Database\DB;
 
 abstract class QueryBuilder
 {
@@ -64,7 +64,7 @@ abstract class QueryBuilder
     {
         return array_map(function ($dirty) {
             $val = $dirty[1]->getValue();
-            if ($val == '' || $val == null)
+            if ($val === '' || $val === null)
                 return 'NULL';
 
             return $this->pdo->quote($dirty[1]->getValue());

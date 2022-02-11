@@ -1,5 +1,7 @@
 <?php 
-    include_once 'common/header.php';
+require_once __DIR__ . '/startup.php';
+
+include 'Common/header.php' ;
 ?>
 
 
@@ -37,5 +39,6 @@
 </table>
 </div>
 <?php 
-    include_once 'common/footer.php';
+
+include_once 'Common/footer.php';
 ?>
