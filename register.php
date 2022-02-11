@@ -9,7 +9,7 @@
 $reset_form = false;
 
 if (isset($_POST['submit'])) {
-    echo $_POST['username'];
+   
     $clean = array();
     $validation_messages = array();
     $trimmed_username = trim($_POST['username']);
@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
     // check password
     $trimmed_password = trim($_POST['password']);
     if (strlen($trimmed_password) < 6)
-        $validation_messages['password'] = 'Password cannot be less than 6 chars!';
+        $validation_messages['password'] = 'Password needs more than 6 chars!';
     else
         $clean['password'] = $trimmed_password;
     
@@ -40,47 +40,41 @@ if (isset($_POST['submit'])) {
 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 
     
-<?php
- if(isset($validation_messages) )
-            echo '<div class="d-flex  justify-content-center align-items-center   style ="margin-top:100px"> 
-                 <div class =" d-flex flex-column  "  style="margin-left:auto;  margin-top:100px;">  ';
-   
-else  echo '<div class="d-flex  justify-content-center  align-items-center  style ="margin-top:100px" ">
-                <div class =" d-flex flex-column "  style="  margin-top:100px;"> ';
-?>
 
+<div class="d-flex  justify-content-center  align-items-center"  style="  margin-top:100px;"     >
+        <div class =" d-flex flex-column col-md-2" > 
 
-       
         <div class=" form-group " >
-            <label for="username">Username</label>
-            
-                
+            <label for="username">Username</label>                
             <input  type="text"  name ="username" value="<?=(isset($_POST['username'])  && !$reset_form) ? 
                                 htmlentities($_POST['username']) : 
                             ''; ?>"
                 class="form-control  " id="username" placeholder="Enter username">
+                <?php if(isset($validation_messages) && !empty($validation_messages['username']))
+                echo ' <h6 style="color: darkred">'.$validation_messages['username'].' </h6> '; ?>
         </div>
 
-    
-        <div class="   form-group ">
+        <div class="  form-group ">
             <label for="pass">Password</label>
             <input type="password" name ="password" class="form-control" id="pass" placeholder="Password">
+
+<?php if(isset($validation_messages) && !empty($validation_messages['password']))
+                echo '  <h6 style="color: darkred">'.$validation_messages['password'].' </h6>';
+           ?>
         </div>  
-        <div>
+       
+        
     
-            <button name='submit' type="submit" class="btn btn-primary">Sign up</button> 
-        </div>
+    <button name='submit' type="submit" class=" border border-primary btn btn-primary">Sign up</button> 
+
 
     </div>   
-  
-        <?php if(isset($validation_messages['username']))
-                echo '
-    <div   style ="padding-left:5px; margin-right:340px" >
-          
-             <p class ="form-text  " style="color: darkred">'.$validation_messages['username'].' </p>
+   
     
-            </div> '; ?>
 </div>
+
+
+
 </form>
 
 

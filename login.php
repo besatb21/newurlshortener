@@ -52,13 +52,19 @@
             <label for="exampleInputEmail1">Username</label>
             <input type="text" class="form-control position-relative translate-middle start-50 top-50 " id="username" placeholder="Enter username">
         </div>
-        <div class="align-items-center form-group col-md-2">
+        <div class=" form-group col-md-2">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            
+
+            
+  <button type="submit" class="w-100 btn btn-primary" style="margin-top:15px ">Login</button> 
+ 
         </div>
-  <div>
-  <button type="submit" class="btn btn-primary">Login</button> 
-  </div>
+
+        
+  
+ 
 
   </div> 
 </form>
