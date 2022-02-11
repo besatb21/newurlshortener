@@ -15,7 +15,11 @@ use Shortener\Services\DB;
 
 // $user->insert();
 
-var_dump(User::select()->first()->delete());
+// $user = User::select()->first();
+
+// $user->role = rand(1, 4);
+
+// $user->update();
 
 include_once "Common/header.php";
 ?>

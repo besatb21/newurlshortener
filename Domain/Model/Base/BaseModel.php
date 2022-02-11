@@ -5,6 +5,7 @@ namespace Shortener\Domain\Model\Base;
 use Shortener\Common\QueryBuilder\DeleteQueryBuilder;
 use Shortener\Common\QueryBuilder\InsertQueryBuilder;
 use Shortener\Common\QueryBuilder\SelectQueryBuilder;
+use Shortener\Common\QueryBuilder\UpdateQueryBuilder;
 
 abstract class BaseModel
 {
@@ -79,14 +80,15 @@ abstract class BaseModel
     {
         foreach($item as $k => $v)
         {
-            $this->_fields[$k]->setValue($v);
+            $this->_fields[$k]->setValueSilently($v);
         }
 
         return $this;
     }
 
 
-    public static function select() {
+    public static function select()
+    {
         $class = get_called_class();
 
         $qb = new SelectQueryBuilder($class);
@@ -94,21 +96,28 @@ abstract class BaseModel
         return $qb;
     }
 
-    public function insert() {
+    public function insert()
+    {
         // Inserts data to db:
         $qb = new InsertQueryBuilder($this);
 
         return $qb->execute();
     }
 
-    public function delete() {
+    public function delete()
+    {
         // Delete this entity:
         $qb = new DeleteQueryBuilder($this);
 
         return $qb->execute();
     }
     
-    public function update() {}    
+    public function update()
+    {
+        $qb = new UpdateQueryBuilder($this);
+
+        return $qb->execute();
+    }
 }
 
 ?>

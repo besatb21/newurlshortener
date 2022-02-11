@@ -53,6 +53,24 @@ abstract class QueryBuilder
         return $this;
     }
 
+    protected function getColumns($dirties)
+    {
+        return array_map(function ($dirty) {
+            return $dirty[0];
+        }, $dirties);
+    }
+
+    protected function getValues($dirties)
+    {
+        return array_map(function ($dirty) {
+            $val = $dirty[1]->getValue();
+            if ($val == '' || $val == null)
+                return 'NULL';
+
+            return $this->pdo->quote($dirty[1]->getValue());
+        }, $dirties);
+    }
+
     protected function getWhereString() {
         $result = "";
 
@@ -70,7 +88,7 @@ abstract class QueryBuilder
                 $result = $result . "{$cnd[0]} {$cnd[1]} {$cnd[2]}";
             }
 
-            $result = "where {$result}";
+            $result = "WHERE {$result}";
         }
         
         return $result;
