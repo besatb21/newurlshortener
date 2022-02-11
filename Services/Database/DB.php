@@ -1,8 +1,9 @@
 <?php
 
-namespace Shortener\Services;
+namespace Shortener\Services\Database;
 
-use Shortener\Services\Configs\DBConfig;
+use Shortener\Services\BaseService;
+use Shortener\Configs\DBConfig;
 use \PDO;
 
 class DB extends BaseService

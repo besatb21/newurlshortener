@@ -1,6 +1,6 @@
 <?php
 
-namespace Shortener\Services\Configs;
+namespace Shortener\Configs;
 
 trait DBConfig
 {

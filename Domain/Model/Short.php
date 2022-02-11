@@ -6,7 +6,7 @@ use Shortener\Domain\Model\Base\BaseModel;
 
 class Short extends BaseModel
 {
-    public static $TABLE = "tbluser";
+    public static $TABLE = "tblshort";
     public static $FIELDS = array(
         "id",
         "user_id",
