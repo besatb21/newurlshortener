@@ -13,7 +13,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Url Shortener</a>
+            <a class="navbar-brand" href="index.php">Url Shortener</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -24,7 +24,7 @@
                         <a class="nav-link" href="#">Link 1</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link 2</a>
+                        <a class="nav-link" href="table.php">Table</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link 3</a>
