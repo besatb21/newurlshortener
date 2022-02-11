@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
        
         
     
-    <button name='submit' type="submit" class=" border border-primary btn btn-primary">Sign up</button> 
+    <button name='submit' type="submit" style="background-color :#8df1e1;" class="  btn border-dark btn ">Sign up</button> 
 
 
     </div>   
