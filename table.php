@@ -1,40 +1,51 @@
 <?php 
 require_once __DIR__ . '/startup.php';
 
+use Shortener\Services\Authentication\Auth;
+use Shortener\Services\Shortening\Shortener;
+
+if (!Auth::instance()->loggedIn()) {
+  header('Location: index.php');
+  exit();
+}
+
+$shorts = Auth::instance()->user()->shortUrls();
+
 include 'Common/header.php' ;
 ?>
 
 
 <div class=" position-absolute w-100  "  >
 <br>
-<h5 style="text-align:center">Contents of the table </h5>
+<h5 style="text-align:center">List of your shortened URLs</h5>
 <table class=" table table-sm  w-75  table-bordered" style="margin:auto">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">ShortCode</th>
+      <th scope="col">Link</th>
+      <th scope="col">Url</th>
+      <th scope="col">QR</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    <? for ($i = 0; $i < count($shorts); $i++) { ?>
+      <tr>
+        <td><?=$i?></td>
+        <td><?=$shorts[$i]->shortcode?></td>
+        <td>
+          <a href="<?=Shortener::instance()->buildUrl($shorts[$i]->shortcode)?>">Link!</a>
+        </td>
+        <td>
+          <a href="<?=$shorts[$i]->url?>">
+            <?=$shorts[$i]->url?>
+          </a>
+        </td>
+        <td>
+          <a href="/urlshortener/api/shorts/getQr.php?short=<?=$shorts[$i]->shortcode?>">QR</a>
+        </td>
+      </tr>
+    <? } ?>
   </tbody>
 </table>
 </div>

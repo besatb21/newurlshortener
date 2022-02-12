@@ -26,4 +26,9 @@ class User extends BaseModel
     {
         return password_verify($password, $this->password);
     }
+
+    public function shortUrls()
+    {
+        return Short::select()->where('user_id', '=', $this->id)->get();
+    }
 }

@@ -20,15 +20,11 @@
             <!-- Links -->
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link 1</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="table.php">Table</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link 3</a>
-                    </li>
+                    <? if(Shortener\Services\Authentication\Auth::instance()->loggedIn()) {?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="table.php">My URLs</a>
+                        </li>
+                    <? } ?>
                 </ul>
 
                 <? if(!Shortener\Services\Authentication\Auth::instance()->loggedIn()) {?>

@@ -34,9 +34,14 @@ class Shortener extends BaseService
         return $shortEnt;
     }
 
+    public function getShort($shortCode)
+    {
+        return Short::select()->where('shortcode', '=', $shortCode)->first();
+    }
+
     public function redirect($shortCode)
     {
-        $shortEnt = Short::select()->where('shortcode', '=', $shortCode)->first();
+        $shortEnt = $this->getShort($shortCode);
 
         if (!$shortEnt)
             throw new ShorteningException("Shortcode doesn't exit in DB: {$shortCode}");
@@ -48,4 +53,8 @@ class Shortener extends BaseService
         // Or, throw an exception
     }
 
+    public function buildUrl($shortCode)
+    {
+        return 'http://localhost:8001/urlshortener/redirect.php?short=' . $shortCode;
+    }
 }
