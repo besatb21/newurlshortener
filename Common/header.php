@@ -20,14 +20,14 @@
             <!-- Links -->
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
-                    <? if(Shortener\Services\Authentication\Auth::instance()->loggedIn()) {?>
+                    <?php if(Shortener\Services\Authentication\Auth::instance()->loggedIn()) {?>
                         <li class="nav-item">
                             <a class="nav-link" href="table.php">My URLs</a>
                         </li>
-                    <? } ?>
+                    <?php } ?>
                 </ul>
 
-                <? if(!Shortener\Services\Authentication\Auth::instance()->loggedIn()) {?>
+                <?php if(!Shortener\Services\Authentication\Auth::instance()->loggedIn()) {?>
                     <span class="navbar-text" style = "margin-right:10px ;">
                         <a  class="btn  btn-sm navbar-button border border-light "   href="register.php" role="button">Sign up</a>
                     </span>
@@ -43,7 +43,7 @@
                     <span class="navbar-text">
                         <a class="btn  btn-sm navbar-button border border-light " href="logout.php" role="button">Logout</a>
                     </span> 
-                <? } ?>
+                <?php } ?>
             </div>
 
         </nav>

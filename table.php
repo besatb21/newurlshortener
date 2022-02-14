@@ -26,7 +26,7 @@ include 'Common/header.php' ;
     </tr>
   </thead>
   <tbody>
-    <? for ($i = 0; $i < count($shorts); $i++) { ?>
+    <?php for ($i = 0; $i < count($shorts); $i++) { ?>
       <tr>
         <td><?=$i?></td>
         <td><?=$shorts[$i]->shortcode?></td>
@@ -42,7 +42,7 @@ include 'Common/header.php' ;
           <a href="/urlshortener/api/shorts/getQr.php?short=<?=$shorts[$i]->shortcode?>">QR</a>
         </td>
       </tr>
-    <? } ?>
+    <?php } ?>
   </tbody>
 </table>
 </div>
