@@ -38,6 +38,9 @@ class Auth extends BaseService
         if (!$user->checkPassword($password))
             throw new AuthException("Wrong password");
         
+        if ($user->disabled)
+            throw new AuthException("User is disabled!");
+        
 
         $_SESSION['user'] = $user;
         return $user;
@@ -58,6 +61,15 @@ class Auth extends BaseService
 
         // Insert the user:
         return $user->insert();
+    }
+
+    public function logInGuard()
+    {
+        if (!$this->loggedIn())
+        {
+            header('Location: index.php');
+            exit();
+        }
     }
 }
 

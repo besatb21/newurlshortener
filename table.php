@@ -4,10 +4,7 @@ require_once __DIR__ . '/startup.php';
 use Shortener\Services\Authentication\Auth;
 use Shortener\Services\Shortening\Shortener;
 
-if (!Auth::instance()->loggedIn()) {
-  header('Location: index.php');
-  exit();
-}
+Auth::instance()->logInGuard();
 
 $shorts = Auth::instance()->user()->shortUrls();
 

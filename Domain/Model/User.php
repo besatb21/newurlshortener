@@ -12,6 +12,7 @@ class User extends BaseModel
         "username",
         "password",
         "role",
+        "disabled",
         "created_at",
         "updated_at"
     );
