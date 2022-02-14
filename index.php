@@ -43,9 +43,9 @@ include_once "Common/header.php";
         </div>
         <div style="padding:10px;" class="row justify-content-md-center">
             <span>
-                <? if (isset($result)) { ?>
+                <?php if (isset($result)) { ?>
                     <a href="<?=$result?>"><?=$result?></a>
-                <? } ?>
+                <?php } ?>
             </span>
         </div>
     </div>

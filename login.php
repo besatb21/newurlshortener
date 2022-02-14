@@ -42,13 +42,13 @@ include 'Common/header.php' ;
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" id="password" placeholder="Password">
 
-            <? if ($validationError) { ?>
+            <?php if ($validationError) { ?>
                 <br>
 
                 <div class="alert alert-danger" role="alert">
                     <?=$validationError?>
                 </div>
-            <? } ?>
+            <?php } ?>
                        
             <button type="submit" name="submit" class="w-100 btn border-dark"style="background-color :#8df1e1; margin-top:15px ">Login</button> 
  
