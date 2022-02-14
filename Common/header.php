@@ -36,7 +36,7 @@
                         <a  class="btn  btn-sm navbar-button border border-light " href="login.php" role="button">Login</a>
                     </span>
 
-                <?} else {?>
+                <?php } else {?>
                     <span class="navba-text">
                         <?=Shortener\Services\Authentication\Auth::instance()->user()->username?>
                     </span>
