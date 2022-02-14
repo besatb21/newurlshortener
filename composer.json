@@ -3,11 +3,12 @@
     "description": "URL Shortener Web Project",
     "type": "project",
     "license": "MIT",
-    "require": {},
-
     "autoload": {
         "psr-4": {
             "Shortener\\": "."
         }
+    },
+    "require": {
+        "chillerlan/php-qrcode": "3.4.1"
     }
 }

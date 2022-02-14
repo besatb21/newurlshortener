@@ -12,6 +12,7 @@ class User extends BaseModel
         "username",
         "password",
         "role",
+        "disabled",
         "created_at",
         "updated_at"
     );
@@ -25,5 +26,10 @@ class User extends BaseModel
     public function checkPassword($password)
     {
         return password_verify($password, $this->password);
+    }
+
+    public function shortUrls()
+    {
+        return Short::select()->where('user_id', '=', $this->id)->get();
     }
 }

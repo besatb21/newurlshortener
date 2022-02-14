@@ -1,13 +1,24 @@
 <?php
 
 use Shortener\Services\Shortening\Shortener;
+use Shortener\Services\Shortening\ShorteningException;
 
 require_once __DIR__ . '/startup.php';
 
 if (isset($_POST['submit']))
 {
     //Shorten the codes:
-    Shortener::instance()->shorten($_POST['url']);
+    $result = '';
+
+    try
+    {
+        $shortEnt = Shortener::instance()->shorten($_POST['url']);
+        $result = Shortener::instance()->buildUrl($shortEnt->shortcode);
+    } 
+    catch (ShorteningException $e)
+    {
+        $result = $e->getMessage();
+    }
 }
 
 include_once "Common/header.php";
@@ -28,7 +39,14 @@ include_once "Common/header.php";
             
                 <button type="submit" name="submit" style="background-color :#8df1e1" class="btn border-dark" type="submit">Shorten</button>
             </form>
-        
+            <br/> 
+        </div>
+        <div style="padding:10px;" class="row justify-content-md-center">
+            <span>
+                <? if (isset($result)) { ?>
+                    <a href="<?=$result?>"><?=$result?></a>
+                <? } ?>
+            </span>
         </div>
     </div>
 </div>

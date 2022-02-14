@@ -7,10 +7,12 @@ use Shortener\Services\Authentication\AuthException;
 if (Auth::instance()->loggedIn())
     header('Location: index.php');
 
+$validationError = "";
+
 if (isset($_POST['submit']))
 {
     // Login:
-
+    
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -22,6 +24,7 @@ if (isset($_POST['submit']))
     catch (AuthException $e)
     {
         // Handle exception here: $e->getMessage()
+        $validationError = $e->getMessage();
     }
 }
 
@@ -38,11 +41,18 @@ include 'Common/header.php' ;
         <div class=" form-group col-md-2">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+
+            <? if ($validationError) { ?>
+                <br>
+
+                <div class="alert alert-danger" role="alert">
+                    <?=$validationError?>
+                </div>
+            <? } ?>
                        
             <button type="submit" name="submit" class="w-100 btn border-dark"style="background-color :#8df1e1; margin-top:15px ">Login</button> 
  
         </div>
-
   </div> 
 </form>
 
