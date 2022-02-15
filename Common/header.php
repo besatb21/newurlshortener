@@ -24,6 +24,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="links.php">My URLs</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="users.php">Users</a>
+                        </li>
                     <?php } ?>
                 </ul>
 

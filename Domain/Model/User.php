@@ -32,4 +32,6 @@ class User extends BaseModel
     {
         return Short::select()->where('user_id', '=', $this->id)->get();
     }
+
+  
 }
