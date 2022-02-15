@@ -33,5 +33,30 @@ class User extends BaseModel
         return Short::select()->where('user_id', '=', $this->id)->get();
     }
 
-  
+    public function isDisabled()
+    {
+        return $this->disabled == 1;
+    }
+
+    public function enable()
+    {
+        $this->disabled = 0;
+        $this->update();
+    }
+
+    public function disable()
+    {
+        $this->disabled = 1;
+        $this->update();
+    }
+
+    public function inRoles($roles)
+    {
+        return in_array($this->role, $roles);
+    }
+
+    public function isAdmin()
+    {
+        return $this->inRoles(array(UserRole::ADMIN));
+    }
 }

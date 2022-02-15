@@ -71,6 +71,16 @@ class Auth extends BaseService
             exit();
         }
     }
+
+    public function roleGuard($roles)
+    {
+        $user = $this->user();
+        if (!$user->inRoles($roles))
+        {
+            header('Location: index.php');
+            exit();
+        }
+    }
 }
 
 ?>

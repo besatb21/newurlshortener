@@ -1,11 +1,12 @@
-
 <?php 
 require_once __DIR__ . '/startup.php';
 
 use Shortener\Services\Authentication\Auth;
 use Shortener\Domain\Model\User;
+use Shortener\Domain\Model\UserRole;
 
 Auth::instance()->logInGuard();
+Auth::instance()->roleGuard(array(UserRole::ADMIN));
 
 $users =User::select()->get();
 // $users = Auth::instance()->user()->select()->get();
@@ -21,11 +22,9 @@ function disabledStatus($disabled) {
 }
 ?>
 
-<h1> if u are here you are admin </h1>
-
 <div class=" position-absolute w-100  "  >
 <br>
-<h5 style="text-align:center">List of your shortened URLs</h5>
+<h5 style="text-align:center">List of users</h5>
 <table class=" table table-sm  w-75  table-bordered" style="margin:auto">
   <thead>
     <tr>
@@ -40,7 +39,7 @@ function disabledStatus($disabled) {
       <tr>
         <td><?= $users[$i]->username?></td>
         <td><?= disabledStatus($users[$i]->disabled)?></td>
-        <td><a href="user.php?username=<?=$users[$i]->username?>"  class ="btn-sm btn-primary">Edit</a></td>
+        <td><a href="user.php?username=<?=$users[$i]->username?>"  class ="btn btn-primary lg">Edit</a></td>
       </tr>
     <?php } ?>
   </tbody>
