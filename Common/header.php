@@ -22,8 +22,13 @@
                 <ul class="navbar-nav mr-auto">
                     <?php if(Shortener\Services\Authentication\Auth::instance()->loggedIn()) {?>
                         <li class="nav-item">
-                            <a class="nav-link" href="table.php">My URLs</a>
+                            <a class="nav-link" href="links.php">My URLs</a>
                         </li>
+                        <?php if(Shortener\Services\Authentication\Auth::instance()->user()->isAdmin()) {?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="users.php">Users</a>
+                            </li>
+                        <?php } ?>
                     <?php } ?>
                 </ul>
 

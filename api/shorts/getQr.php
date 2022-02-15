@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../../startup.php';
 
+header('Content: application/json');
+
 use chillerlan\QRCode\{QRCode, QROptions, QRMatrix};
 use chillerlan\QRCode\Common\EccLevel;
 use Shortener\Services\Shortening\Shortener;
@@ -18,7 +20,7 @@ $short = isset($_GET['short']) ? $_GET['short'] : null;
 
 try {
     $shortened = Shortener::instance()->getShort($short);
-    $im = (new QRCode($options))->render($shortened->url);
+    $im = (new QRCode($options))->render($shortened->shortUrl());
 
     header('Content-type: image/png');
 

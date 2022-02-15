@@ -39,13 +39,35 @@ include 'Common/header.php' ;
           </a>
         </td>
         <td>
-          <a href="/urlshortener/api/shorts/getQr.php?short=<?=$shorts[$i]->shortcode?>">QR</a>
+          <button class="btn btn-primary qr-button" data-short="<?=$shorts[$i]->shortcode?>">QR</button>
         </td>
       </tr>
     <?php } ?>
   </tbody>
 </table>
 </div>
+
+<!--  -->
+<div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center">
+        <img class="qr"></img>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/links.js"></script>
 <?php 
 
 include_once 'Common/footer.php';
