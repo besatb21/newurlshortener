@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../../startup.php';
 
+header('Content: application/json');
+
 use chillerlan\QRCode\QRCode;
 use Shortener\Services\Shortening\Shortener;
 use Shortener\Services\Shortening\ShorteningException;
@@ -17,12 +19,13 @@ try {
     $resultObj = array(
         'Result' => array(
             'Short' => $short,
+            'ShortURL' => $shortened->shortUrl(),
             'URL' => $shortened->url
         )
     );
 
     if ($qr) {
-        $resultObj['Result']['QR'] = (new QRCode())->render($shortened->url);
+        $resultObj['Result']['QR'] = (new QRCode())->render($shortened->shortUrl());
     }
 
     echo json_encode($resultObj);

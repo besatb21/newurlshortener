@@ -3,6 +3,7 @@
 namespace Shortener\Domain\Model;
 
 use Shortener\Domain\Model\Base\BaseModel;
+use Shortener\Services\Shortening\Shortener;
 
 class Short extends BaseModel
 {
@@ -16,4 +17,8 @@ class Short extends BaseModel
         "updated_at"
     );
     public static $PRIMARY = "id";
+
+    public function shortUrl() {
+        return Shortener::instance()->buildUrl($this->shortcode);
+    }
 }
