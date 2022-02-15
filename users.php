@@ -46,3 +46,7 @@ function disabledStatus($disabled) {
   </tbody>
 </table>
 </div>
+
+<?php
+include 'Common/footer.php' ;
+?>
