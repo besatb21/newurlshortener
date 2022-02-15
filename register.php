@@ -26,10 +26,12 @@ if (isset($_POST['submit'])) {
     $trimmed_password = trim($_POST['password']);
     if (strlen($trimmed_password) < 6)
         $validation_messages['password'] = 'Password needs more than 6 chars!';
+    else if($_POST['passwordA']!=$trimmed_password)
+        $validation_messages['password'] ='Passwords don\'t match ';
     else
         $clean['password'] = $trimmed_password;
-    
-    
+
+   
     if (count($validation_messages) == 0)
     {
         // No validation errors, create a user:
@@ -46,7 +48,7 @@ if (isset($_POST['submit'])) {
 
     
 
-<div class="d-flex  justify-content-center  align-items-center"  style="  margin-top:100px;"     >
+<div class="d-flex  justify-content-center  align-items-center"  style="  margin-top:80px;"     >
         <div class =" d-flex flex-column col-md-2" > 
 
         <div class=" form-group " >
@@ -62,23 +64,19 @@ if (isset($_POST['submit'])) {
         <div class="  form-group ">
             <label for="pass">Password</label>
             <input type="password" name ="password" class="form-control" id="pass" placeholder="Password">
+            <label for="passA">Password again!</label>
+            <input type="password" name ="passwordA" class="form-control" id="passA" placeholder="Password">
 
 <?php if(isset($validation_messages) && !empty($validation_messages['password']))
                 echo '  <h6 style="color: darkred">'.$validation_messages['password'].' </h6>';
            ?>
-        </div>  
-       
-        
+        </div>         
     
     <button name='submit' type="submit" style="background-color :#8df1e1;" class="  btn border-dark btn ">Sign up</button> 
 
-
     </div>   
-   
     
 </div>
-
-
 
 </form>
 
