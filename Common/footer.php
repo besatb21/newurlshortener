@@ -3,8 +3,8 @@
         <footer class="bg-light text-center text-lg-start fixed-bottom">
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                Thing here
-                <a class="text-dark" href="https://mdbootstrap.com/">More stuff here</a>
+                Epoka Uni
+                <a class="text-dark" href="http://shkurt.xyz">shkurt.xyz</a>
             </div>
             <!-- Copyright -->
         </footer>
