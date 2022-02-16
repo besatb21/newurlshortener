@@ -7,8 +7,12 @@ use Shortener\Services\Authentication\Auth;
 
 use Shortener\Domain\Model\Short;
 
+use Shortener\Configs\ShortConfig;
+
 class Shortener extends BaseService
 {
+    use ShortConfig;
+
     private function generate()
     {
         return substr(str_shuffle(MD5(microtime())), 0, 10);
@@ -55,6 +59,6 @@ class Shortener extends BaseService
 
     public function buildUrl($shortCode)
     {
-        return 'http://localhost:8001/urlshortener/redirect.php?short=' . $shortCode;
+        return "{$this->BASE}/redirect.php?short=" . $shortCode;
     }
 }
