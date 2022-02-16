@@ -4,6 +4,7 @@ require_once __DIR__ . '/startup.php';
 use Shortener\Services\Authentication\Auth;
 use Shortener\Domain\Model\User;
 use Shortener\Domain\Model\UserRole;
+use Shortener\Domain\Model\Short;
 
 Auth::instance()->logInGuard();
 Auth::instance()->roleGuard(array(UserRole::ADMIN));
