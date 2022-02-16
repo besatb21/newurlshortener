@@ -14,10 +14,24 @@ $username = $_GET['username'];
 $user = User::select()->where('username', '=', $username)->first();
 $urls = Short::select()->where('user_id', '=', $user->id)->get();
 
-if (isset($_POST['disable'])) {
-    $user->disable();
-} else if (isset($_POST['enable'])) {
-    $user->enable();
+if (isset($_POST['submit']))
+{
+    if (isset($_POST['disabled']))
+    {
+        $disabled = $_POST['disabled'] == 'on' ? 1 : 0;
+        $user->disabled = $disabled;
+    }
+    
+    if (isset($_POST['role']))
+    {
+        $role = intval($_POST['role']);
+
+        if (isset(UserRole::$MAP[$role]))
+            $user->role = $role;
+    }
+    
+    $user->update();
+    echo "UDPATE!";
 }
 
 include 'Common/header.php' ; ?>
@@ -34,23 +48,18 @@ include 'Common/header.php' ; ?>
             </div>
             <form action="" method="POST">
                 
-            <div class="col-sm-12 -primary " >
+                <div class="col-sm-12 -primary " >
                
-                <select  name="roleEdit"class=" mr-4 form-select">
-                    <option selected>Role</option>
-                    <?php 
-                    foreach(UserRole::$MAP as $roleId => $roleName)
-                    {
-                        ?> 
-                        <option value=<?=$roleId ?> > <?=$roleName ?> </option>
-                    <?php } ?>
-                        
-                </select>
-             <?php if ($user->isDisabled()) { ?>
-                        <input type="submit" name="enable" class="btn-sm btn-primary  " value="Enable"/>
-                    <?php } else {?>
-                        <input type="submit" name="disable" class="btn-sm btn-primary" value ="Disable"/>
-                                            <?php } ?>
+                    <select  name="role" class=" mr-4 form-select">
+                        <?php foreach(UserRole::$MAP as $roleId => $roleName) { ?> 
+                            <option value=<?=$roleId ?> <?=$user->role==$roleId ? 'selected' : ''?>> <?=$roleName ?> </option>
+                        <?php } ?>
+                    </select>
+
+                    <label for="status">Disabled</label>
+                    <input type="checkbox" name="disabled" <?=$user->isDisabled() ? 'checked' : '' ?> />
+
+                    <button type="submit" name="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>
