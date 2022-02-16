@@ -42,7 +42,7 @@
                     </span>
 
                 <?php } else {?>
-                    <span class="navba-text">
+                    <span class="navbar-text pr-2">
                         <?=Shortener\Services\Authentication\Auth::instance()->user()->username?>
                     </span>
                     <span class="navbar-text">
