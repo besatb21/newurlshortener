@@ -59,6 +59,12 @@ class Shortener extends BaseService
 
     public function buildUrl($shortCode)
     {
-        return "http://{$this->BASE}/redirect.php?short=" . $shortCode;
+        $base = "http://{$this->BASE}/";
+        if ($this->WITH_REWRITE)
+            $base .= "@/";
+        else
+            $base .= "redirect.php?short=";
+
+        return  $base . $shortCode;
     }
 }
