@@ -4,9 +4,9 @@ namespace Shortener\Configs;
 
 trait DBConfig
 {
-    private $HOST = "db";
+    private $HOST = "";
     private $USERNAME = "root";
-    private $PASSWORD = "test";
+    private $PASSWORD = "";
     private $DB = "urlshortener";
     private $CHARSET = "utf8mb4";
 }
