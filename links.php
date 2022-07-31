@@ -52,12 +52,13 @@ include 'Common/header.php' ;
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">QR code for the link</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" style="text-align: center">
+        <p>Since this project is hosted locally (and not on Epoka's server), the QR code does not actually lead you , but if you scan it you will see that the url actually makes sense</p>
         <img class="qr"></img>
       </div>
       <div class="modal-footer">
